@@ -1,22 +1,29 @@
-import React, { useContext } from 'react'
-import "../App.css"
-import LanguageContext from '../context'
+import React, { useContext } from "react";
+import LanguageContext, { languages } from "../context";
 
 const Navbar = () => {
-    /* DICA: Descomente esse bloco de código, quando "App.jsx" tiver um provider
-    COnsejo: Descomentar este bloque de código, cuando "App.jsx" ya tenga un proveedor
-    const { language, handleChangeLA } = useContext(LanguageContext)
-    const {text} = language
-    
-    */
-    return (
-        <div className="navbar">
-            {/* CONSEJO: Renderizar la información traida del contexto de forma dinamica */}
-            <p>Início</p> 
-            <p>Idioma atual: PTBR</p>
-            <button>Alterar idioma</button>
-        </div>
-    )
-}
+  const { language, changeLanguage } = useContext(LanguageContext);
+  const { text, id } = language;
 
-export default Navbar
+  const handleChangeLanguage = () => {
+    if (id === "EN") {
+      changeLanguage(languages.spanish);
+    } else if (id === "ES") {
+      changeLanguage(languages.portuguese);
+    } else {
+      changeLanguage(languages.english);
+    }
+  };
+
+  return (
+    <div className="navbar">
+      <p>{text.home}</p>
+      <p>
+        {text.current}: {id}
+      </p>
+      <button onClick={handleChangeLanguage}>{text.button}</button>
+    </div>
+  );
+};
+
+export default Navbar;

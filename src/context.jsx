@@ -8,10 +8,17 @@ export const languages = {
         id: "EN",
         text: EN
     },
-    /* SUGERENCIA: agregue los demás idiomas */
+    spanish: {
+        id: "ES",
+        text: ES
+    },
+    portuguese: {
+        id: "PTBR",
+        text: PTBR
+    }
 };
 
 /* SUGERENCIA: Usa createContext e inicia el idioma inglês como predeterminado */
-const LanguageContext = "";
+const LanguageContext = createContext(languages.english); // Inicializamos con inglés por defecto
 
 export default LanguageContext;
